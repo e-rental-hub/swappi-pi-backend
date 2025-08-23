@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Backend for XChange PI",
   "main": "dist/server.js",
-  "author": "E-Landlord Team",
+  "author": "Pay Pi Team",
   "license": "PiOS",
   "scripts": {
     "start": "node dist/server.js",
