@@ -4,10 +4,11 @@ import dotenv from "dotenv";
 import { connectDB } from "./config/db";
 import app from "./utils/app";
 import { env } from "./utils/env";
+import logger from "./config/loggingConfig";
 dotenv.config();
 
 const startServer = async () => {
-  console.info("Initiating server setup...");
+  logger.info("Initiating server setup...");
   try {
     // Establish connection to MongoDB
     await connectDB();
@@ -17,14 +18,14 @@ const startServer = async () => {
       await new Promise<void>((resolve) => {
         // Start listening on the specified port
         app.listen(env.PORT, () => {
-          console.info(`Server is running on port ${env.PORT}`);
+          logger.info(`Server is running on port ${env.PORT}`);
           resolve();
         });
       });
     }
-    console.info("Server setup initiated.");
+    logger.info("Server setup initiated.");
   } catch (error) {
-    console.error('Server failed to initialize:', error);
+    logger.error('Server failed to initialize:', error);
   }
 };
 
