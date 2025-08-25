@@ -18,9 +18,10 @@ export const getLoggerConfig = (): { level: string; format: any; transports: any
       new transports.Console({ format: logFormat })
     );
   } else if (env.NODE_ENV === 'production') {
-    logLevel = 'error';
+    logLevel = 'info'; // to be set to 'error' in future for less verbosity
     logFormat = format.combine(
-      format.errors({ stack: true }),
+      // format.errors({ stack: true }),
+      format.colorize(),
       format.timestamp(),
       format.json()
     );
